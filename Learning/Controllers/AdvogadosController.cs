@@ -10,11 +10,11 @@ using Learning.Models;
 
 namespace Learning.Controllers
 {
-    public class UsuariosController : Controller
+    public class AdvogadosController : Controller
     {
         private readonly ApplicationContext _context;
 
-        public UsuariosController(ApplicationContext context)
+        public AdvogadosController(ApplicationContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace Learning.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Advogados.ToListAsync());
         }
 
         // GET: Usuarios/Details/5
@@ -33,7 +33,7 @@ namespace Learning.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios
+            var usuarios = await _context.Advogados
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (usuarios == null)
             {
@@ -54,7 +54,7 @@ namespace Learning.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,OAB,Telefone,IdGame")] Usuarios usuarios)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Sobrenome,OAB,Telefone,IdGame")] Advogados usuarios)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace Learning.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios.FindAsync(id);
+            var usuarios = await _context.Advogados.FindAsync(id);
             if (usuarios == null)
             {
                 return NotFound();
@@ -86,7 +86,7 @@ namespace Learning.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,OAB,Telefone,IdGame")] Usuarios usuarios)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Sobrenome,OAB,Telefone,IdGame")] Advogados usuarios)
         {
             if (id != usuarios.Id)
             {
@@ -124,7 +124,7 @@ namespace Learning.Controllers
                 return NotFound();
             }
 
-            var usuarios = await _context.Usuarios
+            var usuarios = await _context.Advogados
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (usuarios == null)
             {
@@ -139,15 +139,15 @@ namespace Learning.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var usuarios = await _context.Usuarios.FindAsync(id);
-            _context.Usuarios.Remove(usuarios);
+            var usuarios = await _context.Advogados.FindAsync(id);
+            _context.Advogados.Remove(usuarios);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UsuariosExists(int id)
         {
-            return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Advogados.Any(e => e.Id == id);
         }
     }
 }

@@ -13,6 +13,6 @@ namespace Learning.Data
         {
 
         }
-        public DbSet<Learning.Models.Usuarios> Usuarios { get; set; }
+        public DbSet<Learning.Models.Advogados> Advogados { get; set; }
     }
 }

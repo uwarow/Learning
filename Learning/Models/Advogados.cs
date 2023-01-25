@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Learning.Models
 {
-    public class Usuarios
+    public class Advogados
     {
         [Key]
         public int Id { get; set; }
